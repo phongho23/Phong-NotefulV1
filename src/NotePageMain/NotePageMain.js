@@ -1,22 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Note from '../Note/Note'
 import './NotePageMain.css'
+import PropTypes from 'prop-types';
 
-export default function NotePageMain(props) {
-  return (
-    <section className='NotePageMain'>
-      <Note
-        id={props.note.id}
-        name={props.note.name}
-        modified={props.note.modified}
-      />
-      <div className='NotePageMain__content'>
-        {props.note.content.split(/\n \r|\n/).map((para, i) =>
-          <p key={i}>{para}</p>
-        )}
-      </div>
-    </section>
-  )
+export default class NotePageMain extends Component {
+
+  render() {
+    return (
+      <section className='NotePageMain'>
+        <Note
+          id={this.props.note.id}
+          name={this.props.note.name}
+          modified={this.props.note.modified}
+          onDelete={() => this.props.history.push('/')}
+        />
+        <div className='NotePageMain__content'>
+          {this.props.note.content.split(/\n \r|\n/).map((para, i) =>
+            <p key={i}>{para}</p>
+          )}
+        </div>
+      </section>
+    )
+  }
 }
 
 NotePageMain.defaultProps = {
@@ -24,3 +29,10 @@ NotePageMain.defaultProps = {
     content: '',
   }
 }
+
+NotePageMain.propTypes = {
+  note: PropTypes.object,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+};
