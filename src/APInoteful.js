@@ -15,6 +15,7 @@ export default class APInoteful extends Component {
         return fetch(url, options)
     }
 
+    //apiDelete noteID needed
     static apiDelete(noteId) {
         const searchURL = `http://localhost:9090/notes/${noteId}/`;
         const url = searchURL;
