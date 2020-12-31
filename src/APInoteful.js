@@ -5,9 +5,7 @@ export default class APInoteful extends Component {
     static apiGet() {
         const searchURL = 'http://localhost:9090/db';
 
-        // const queryString = this.formatQueryParams(data);
         const url = searchURL;
-
         const options = {
             method: 'GET',
             headers: {
@@ -19,10 +17,7 @@ export default class APInoteful extends Component {
 
     static apiDelete(noteId) {
         const searchURL = `http://localhost:9090/notes/${noteId}/`;
-
-        // const queryString = this.formatQueryParams(data);
         const url = searchURL;
-
         const options = {
             method: 'DELETE',
             headers: {
